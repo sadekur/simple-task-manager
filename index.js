@@ -65,7 +65,6 @@ app.put('/tasks/:id', (req, res) => {
     res.status(404).send('Task not found');
   }
 });
-});
 
 app.delete('/tasks/:id', (req, res) => {
   const taskId = parseInt(req.params.id);
