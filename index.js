@@ -8,6 +8,18 @@ const taskArr = [
         tags: ['Node.js', 'JavaScript'],
         status: 'todo',
     },
+    {
+        id: 2,
+        task: 'Create REST API endpoints',
+        tags: ['Node.js', 'Express'],
+        status: 'in-progress',
+    },
+    {
+        id: 3,
+        task: 'Write unit tests',
+        tags: ['Node.js', 'Jest'],
+        status: 'done',
+    },
 ]
 
 app.get('/', (req, res) => {
