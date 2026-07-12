@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
   res.send('Task Manager API');
 });
 
+app.get('/tasks', (req, res) => {
+  res.json(taskArr);
+});
+
 app.post('/tasks', (req, res) => {
   // Logic to create a new task
   res.send('Task created');
