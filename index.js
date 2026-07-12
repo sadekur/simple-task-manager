@@ -1,6 +1,13 @@
 const express = require('express');
 const app = express();
 
+const taskArr = [
+    {
+        id: 1,
+        task: 'Complete project documentation',
+    },
+]
+
 app.get('/', (req, res) => {
   res.send('Task Manager API');
 });
