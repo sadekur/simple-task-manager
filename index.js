@@ -5,6 +5,8 @@ const taskArr = [
     {
         id: 1,
         task: 'Complete project documentation',
+        tags: ['Node.js', 'JavaScript'],
+        status: 'todo',
     },
 ]
 
