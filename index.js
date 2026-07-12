@@ -55,8 +55,16 @@ app.post('/tasks', (req, res) => {
 });
 
 app.put('/tasks/:id', (req, res) => {
-  // Logic to update a task by ID
-  res.send(`Task with ID ${req.params.id} updated`);
+  const taskId = parseInt(req.params.id);
+  const taskIndex = taskArr.findIndex(t => t.id === taskId);
+  if (taskIndex !== -1) {
+    const { task, tags, status } = req.body;
+    taskArr[taskIndex] = { ...taskArr[taskIndex], task, tags, status };
+    res.json(taskArr[taskIndex]);
+  } else {
+    res.status(404).send('Task not found');
+  }
+});
 });
 
 app.delete('/tasks/:id', (req, res) => {
