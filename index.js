@@ -68,8 +68,14 @@ app.put('/tasks/:id', (req, res) => {
 });
 
 app.delete('/tasks/:id', (req, res) => {
-  // Logic to delete a task by ID
-  res.send(`Task with ID ${req.params.id} deleted`);
+  const taskId = parseInt(req.params.id);
+  const taskIndex = taskArr.findIndex(t => t.id === taskId);
+  if (taskIndex !== -1) {
+    taskArr.splice(taskIndex, 1);
+    res.send(`Task with ID ${req.params.id} deleted`);
+  } else {
+    res.status(404).send('Task not found');
+  }
 });
 
 const PORT = process.env.PORT || 3000;
