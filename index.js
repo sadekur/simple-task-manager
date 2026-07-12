@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+app.use(express.json());
+
 const taskArr = [
     {
         id: 1,
@@ -41,8 +43,15 @@ app.get('/tasks/:id', (req, res) => {
 });
 
 app.post('/tasks', (req, res) => {
-  // Logic to create a new task
-  res.send('Task created');
+  const { task, tags, status } = req.body;
+  const newTask = {
+    id: taskArr.length > 0 ? Math.max(...taskArr.map(t => t.id)) + 1 : 1,
+    task,
+    tags,
+    status
+  };
+  taskArr.push(newTask);
+  res.status(201).json(newTask);
 });
 
 app.put('/tasks/:id', (req, res) => {
