@@ -30,6 +30,16 @@ app.get('/tasks', (req, res) => {
   res.json(taskArr);
 });
 
+app.get('/tasks/:id', (req, res) => {
+  const taskId = parseInt(req.params.id);
+  const task = taskArr.find(t => t.id === taskId);
+  if (task) {
+    res.json(task);
+  } else {
+    res.status(404).send('Task not found');
+  }
+});
+
 app.post('/tasks', (req, res) => {
   // Logic to create a new task
   res.send('Task created');
